@@ -1,8 +1,10 @@
 import React from 'react';
-import TaskList from '../containers/task-list';
+import TaskList from '../containers/taskList';
+import AddTask from '../containers/addTask';
 
 const Tasks = () => (
   <div>
+    <AddTask/>
     <TaskList/>
   </div>
 );
