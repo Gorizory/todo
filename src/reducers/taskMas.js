@@ -1,11 +1,4 @@
-const tasks = [
-  {name: 'kek', done: false},
-  {name: 'not kek', done: true},
-  {name: 'top kek', done: true},
-  {name: 'lel', done: false}
-];
-
-export default function (state=tasks, action) {
+export default function (state=[], action) {
   let newTasks;
   switch (action.type) {
     case 'BOX_CHECKED':

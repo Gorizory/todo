@@ -2,10 +2,16 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import allReducers from './reducers/index';
-import Tasks from './components/tasks'
+import { loadState, saveState }  from './localStorage';
+import Tasks from './components/tasks';
 import './App.css';
 
-const store = createStore(allReducers);
+const persistedState = loadState();
+const store = createStore(allReducers, persistedState);
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 const App = () => (
   <Provider store={store}>
