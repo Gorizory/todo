@@ -1,21 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import allReducers from './reducers/index';
+import Tasks from './components/tasks'
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+const store = createStore(allReducers);
+
+const App = () => (
+  <Provider store={store}>
+    <div className="App">
+      <h1 className="App-header">
+        <span className="App-title">TODOs</span>
+      </h1>
+      <Tasks/>
+      <div>
+        Pages
       </div>
-    );
-  }
-}
+      <div>
+        Task type
+      </div>
+    </div>
+  </Provider>
+);
 
 export default App;
