@@ -1,9 +1,8 @@
-const tasks = [
-  {name: 'kek', status: true},
-  {name: 'not kek', status: false}
-]
-
 export default function () {
-  console.log(tasks);
-  return tasks;
+  return [
+    {name: 'kek', done: false},
+    {name: 'not kek', done: true},
+    {name: 'top kek', done: true},
+    {name: 'lel', done: true}
+  ];
 }

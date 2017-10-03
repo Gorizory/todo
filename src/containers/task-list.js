@@ -2,24 +2,25 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import '../App.css';
-import {changeBox} from '../actions/index'
+import { checkBox, uncheckBox } from '../actions/index'
+import { v4 } from 'node-uuid'
 
 class TaskList extends Component {
 
   showList() {
     return this.props.tasks.map ((task, i) => {
-      if (task.status)
+      if (!task.done)
       {
         return (
-        <div className="App-task">
-          <input type="checkbox" onChange={() => this.props.changeBox(i)}/>
+        <div className="App-task" key={v4()}>
+          <input type="checkbox" onChange={() => this.props.checkBox(i)}/>
           {task.name}
         </div>
         )
       } else {
         return (
-          <div className="App-task">
-            <input type="checkbox" onChange={() => this.props.changeBox(i)}/>
+          <div className="App-task" key={v4()}>
+            <input type="checkbox" defaultChecked onChange={() => this.props.uncheckBox(i)}/>
             <s>{task.name}</s>
           </div>
         )
@@ -28,7 +29,6 @@ class TaskList extends Component {
   }
 
   render () {
-    console.log(this.props);
     return (
       <div>
         {this.showList()}
@@ -44,7 +44,7 @@ function mapStateToProps (state) {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({changeBox: changeBox}, dispatch)
+  return bindActionCreators({checkBox: checkBox, uncheckBox: uncheckBox}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
