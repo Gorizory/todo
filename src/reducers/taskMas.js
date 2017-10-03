@@ -2,7 +2,7 @@ const tasks = [
   {name: 'kek', done: false},
   {name: 'not kek', done: true},
   {name: 'top kek', done: true},
-  {name: 'lel', done: true}
+  {name: 'lel', done: false}
 ];
 
 export default function (state=tasks, action) {
