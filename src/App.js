@@ -6,7 +6,6 @@ import allReducers from './reducers/index';
 import { loadState, saveState }  from './localStorage';
 import AllTasks from './components/allTasks';
 import Task from './components/task';
-import logo from './logo.svg';
 import './App.css';
 
 const persistedState = loadState();
@@ -20,7 +19,6 @@ const App = () => (
   <Provider store={store}>
     <div className="App">
       <h1 className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <span className="App-title">TODOs</span>
       </h1>
       <Switch>

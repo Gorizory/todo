@@ -16,6 +16,7 @@ class AddTask extends Component {
             this.props.addTask({text, desc});
           }
           ev.target.querySelector('.input-todo').value = '';
+          ev.target.querySelector('.input-desc').value = '';
         }
         }>
           <input placeholder='Задача' id='text' className='input-todo'/>
