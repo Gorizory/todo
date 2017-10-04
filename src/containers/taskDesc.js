@@ -4,7 +4,7 @@ import pathToRegexp from 'path-to-regexp';
 
 class TaskDesc extends Component {
   render () {
-    const re = pathToRegexp('\::num');
+    const re = pathToRegexp('::num');
     const num = re.exec(this.props.match.params.number)[1] - 1;
 
     return (
@@ -20,6 +20,6 @@ function mapStateToProps (state) {
   return {
     tasks: state.tasks
   };
-};
+}
 
 export default connect(mapStateToProps)(TaskDesc);
