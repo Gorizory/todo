@@ -11,7 +11,7 @@ export default function (state=[], action) {
       return newTasks;
     case 'ADD_TASK':
       console.log(action);
-      newTasks = state.concat({name: action.payload, done: false});
+      newTasks = state.concat({name: action.payload.text, done: false, desc: action.payload.desc});
       return newTasks;
     default:
       return state;

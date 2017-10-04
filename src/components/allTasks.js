@@ -1,11 +1,14 @@
 import React from 'react';
+import {Route} from 'react-router-dom'
 import TaskList from '../containers/taskList';
 import AddTask from '../containers/addTask';
+import Pages from '../containers/pages';
 
-const Tasks = () => (
+const Tasks = ({match}) => (
   <div>
     <AddTask/>
-    <TaskList/>
+    <Route component={TaskList}/>
+    <Route component={Pages}/>
   </div>
 );
 
