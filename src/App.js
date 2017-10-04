@@ -1,21 +1,40 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { Route, Link, Switch } from 'react-router-dom';
+import allReducers from './reducers/index';
+import { loadState, saveState }  from './localStorage';
+import AllTasks from './components/allTasks';
+import Task from './components/task';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+const persistedState = loadState();
+const store = createStore(allReducers, persistedState);
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
+
+const App = () => (
+  <Provider store={store}>
+    <div className="App">
+      <h1 className="App-header">
+        <span className="App-title">TODOs</span>
+      </h1>
+      <Switch>
+        <Route exact path='/' component={AllTasks}/>
+        <Route exact path='/:page' component={AllTasks}/>
+        <Route exact path='/done/:page' component={AllTasks}/>
+        <Route exact path='/active/:page' component={AllTasks}/>
+        <Route path='/task/:number' component={Task}/>
+      </Switch>
+      <div>
+        <Link to='/1'> Все </Link>
+        <Link to='/active/1'> Активные </Link>
+        <Link to='/done/1'> Выполненные </Link>
       </div>
-    );
-  }
-}
+    </div>
+  </Provider>
+);
 
 export default App;
