@@ -10,16 +10,17 @@ class AddTask extends Component {
       <div>
         <form onSubmit={(ev) => {
           ev.preventDefault();
-          const text = ev.target.querySelector('input-todo').value;
-          const desc = ev.target.querySelector('input-desc').value;
+          const text = ev.target.querySelector('.input-todo').value;
+          const desc = ev.target.querySelector('.input-desc').value;
           if (text !== '') {
             this.props.addTask({text, desc});
           }
-          ev.target.querySelector('input').value = '';
+          ev.target.querySelector('.input-todo').value = '';
         }
         }>
           <input placeholder='Задача' id='text' className='input-todo'/>
-          <input placeholder='Описание' id='desc' className='input-desc'/>
+          <input placeholder='Задача' id='desc' className='input-desc'/>
+          <button type='submit'> Добавить задачу </button>
         </form>
       </div>
     )
