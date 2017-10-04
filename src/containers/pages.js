@@ -21,8 +21,8 @@ class Pages extends Component {
           if (!task.done) {
             newTasks = newTasks.concat(tasks[i]);
           }
-        })
-        path = '/active/'
+        });
+        path = '/active/';
         break;
       case 'done':
         newTasks = [];
@@ -30,12 +30,12 @@ class Pages extends Component {
           if (task.done) {
             newTasks = newTasks.concat(tasks[i]);
           }
-        })
-        path = '/done/'
+        });
+        path = '/done/';
         break;
       default:
         newTasks = Array.from(tasks);
-        path = '/'
+        path = '/';
         break;
     }
 
@@ -52,7 +52,7 @@ class Pages extends Component {
   render () {
     return (
       <div>
-        {this.printPages()};
+        {this.printPages()}
       </div>
     )
   }

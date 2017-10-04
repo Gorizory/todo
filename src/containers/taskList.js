@@ -12,17 +12,17 @@ export class TaskList extends Component {
   showList() {
     let tasks = this.props.tasks;
     let newTasks;
-    let re;
+    let result;
 
     let page = this.props.match.params.page - 1;
     if (page === undefined) {
       page = 0;
-      re = pathToRegexp('/:type?');
+      result = undefined;
     } else {
-      re = pathToRegexp('/:type?/:page');
+      const re = pathToRegexp('/:type?/:page');
+      result = re.exec(this.props.match.path)[1];
     }
 
-    const result = re.exec(this.props.match.path)[1];
     switch (result) {
       case 'active':
         newTasks = [];
@@ -30,7 +30,7 @@ export class TaskList extends Component {
           if (!task.done) {
             newTasks = newTasks.concat(tasks[i]);
           }
-        })
+        });
         break;
       case 'done':
         newTasks = [];
@@ -38,7 +38,7 @@ export class TaskList extends Component {
           if (task.done) {
             newTasks = newTasks.concat(tasks[i]);
           }
-        })
+        });
         break;
       default:
         newTasks = Array.from(tasks);
