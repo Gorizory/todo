@@ -15,7 +15,6 @@ export class TaskList extends Component {
     let result;
 
     let page = this.props.match.params.page - 1;
-    console.log(page);
     if (isNaN(page)) {
       page = 0;
     }
