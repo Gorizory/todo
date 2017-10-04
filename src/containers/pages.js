@@ -14,7 +14,13 @@ class Pages extends Component {
     let path;
 
     const re = pathToRegexp('/:type?/:page');
-    switch (re.exec(this.props.match.path)[1]) {
+    let result;
+    if (re.exec(this.props.match.path) === null) {
+      result = undefined;
+    } else {
+      result = re.exec(this.props.match.path)[1];
+    }
+    switch (result) {
       case 'active':
         newTasks = [];
         tasks.forEach((task, i) => {

@@ -20,7 +20,7 @@ export class TaskList extends Component {
     }
 
     const re = pathToRegexp('/:type?/:page');
-    if (re.exec(this.props.match.path) === undefined) {
+    if (re.exec(this.props.match.path) === null) {
       result = undefined;
     } else {
       result = re.exec(this.props.match.path)[1];

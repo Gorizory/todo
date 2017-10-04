@@ -19,7 +19,7 @@ class AddTask extends Component {
         }
         }>
           <input placeholder='Задача' id='text' className='input-todo'/>
-          <input placeholder='Задача' id='desc' className='input-desc'/>
+          <input placeholder='Описание' id='desc' className='input-desc'/>
           <button type='submit'> Добавить задачу </button>
         </form>
       </div>
